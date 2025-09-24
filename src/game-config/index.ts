@@ -1,0 +1,6 @@
+export default {
+  MOLES_COUNT: 9,
+  INCREMENT_SCORE_BY: 10,
+  LIVES_COUNT: 3,
+  SPEED_INCREASE: 0.2,
+};
