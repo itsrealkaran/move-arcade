@@ -11,6 +11,7 @@ import {
 import { useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { useAppDispatch } from "@/store";
+import GlobalStyle from "@/styles/global";
 
 const Leaderboard = () => {
   const { leaderboard } = useSelector(leaderboardSelector);
@@ -22,10 +23,12 @@ const Leaderboard = () => {
 
   return (
     <LeaderboardContainer>
+      <GlobalStyle />
+
       <Title>Leaderboard</Title>
       {leaderboard.length > 0 ? (
         <RecordList>
-          {leaderboard.map(record => (
+          {leaderboard.map((record) => (
             <Record key={uuidv4()}>
               <p>{record.playerName}</p>
               <span>{record.score}</span>

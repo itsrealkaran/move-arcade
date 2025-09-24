@@ -6,7 +6,7 @@ export default styled.button`
   background: transparent;
   color: ${styles.colors.brown};
   cursor: pointer;
-  font-family: ${styles.fonts.fontFamily.title};
+  
   font-size: 0.875rem;
   transition: transform ${styles.transitions.default};
   transform: scaleX(1);

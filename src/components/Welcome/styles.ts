@@ -30,7 +30,7 @@ export const WelcomeContainer = styled.div`
 
   h1 {
     color: white;
-    font-family: ${styles.fonts.fontFamily.title};
+    
     font-size: 3rem;
     text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
     margin-bottom: 2rem;
@@ -86,7 +86,7 @@ export const StartButton = styled.button`
   box-shadow: rgba(0, 0, 0, 0.6) 2px 4px 14px 4px;
   color: ${styles.colors.brown};
   cursor: pointer;
-  font-family: ${styles.fonts.fontFamily.title};
+  
   font-size: 1.125rem;
   letter-spacing: 0.0625rem;
   margin-bottom: 5rem;
@@ -122,7 +122,7 @@ export const NameInput = styled.div`
     border: 2px solid ${styles.colors.brown};
     border-radius: 4px;
     box-shadow: none;
-    font-family: ${styles.fonts.fontFamily.title};
+    
     font-size: 18px;
     align-self: flex-start;
     height: 50px;

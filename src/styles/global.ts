@@ -17,14 +17,12 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     background: ${styles.colors["green-100"]} ;
-    font-family: ${styles.fonts.fontFamily.title};
   }
 
   a {
     border: 0;
     background: transparent;
     color: ${styles.colors.brown};
-    font-family: ${styles.fonts.fontFamily.title};
     font-size: 1.25rem;
     transition: transform ${styles.transitions.default};
     transform: scaleX(1);

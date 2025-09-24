@@ -7,7 +7,7 @@ export const ButtonContainer = styled.button`
   background-color: ${styles.colors.white};
   color: ${styles.colors.brown};
   cursor: pointer;
-  font-family: ${styles.fonts.fontFamily.title};
+  
   font-size: 1rem;
   letter-spacing: 1px;
   padding: 6px;
