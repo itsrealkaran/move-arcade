@@ -10,7 +10,7 @@ export const FinalScoreContainer = styled.div`
 
   p {
     color: ${styles.colors.brown};
-    font-family: ${styles.fonts.fontFamily.title};
+    
     font-size: 3rem;
     text-shadow: 5px 4px 2px ${styles.colors["yellow-400"]};
     margin-bottom: 2rem;

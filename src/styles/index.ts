@@ -8,12 +8,6 @@ export default {
     "yellow-400": "#E2C044",
   },
 
-  fonts: {
-    fontFamily: {
-      title: '"Bangers", cursive;',
-      text: '"Open Sans", sans-serif',
-    },
-  },
   transitions: {
     default: ".2s ease",
   },
