@@ -23,7 +23,7 @@ function App() {
       element: <Stack />,
     },
     {
-      path: "/leaderboard",
+      path: "/whack-a-penguin/leaderboard",
       element: <Leaderboard />,
     },
   ]);

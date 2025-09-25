@@ -13,6 +13,16 @@ interface GameCardProps {
 }
 
 const GameCard = ({ game, index, navigate }: GameCardProps) => {
+  const getImageSrc = (path: string) => {
+    if (path === "/whack-a-penguin") {
+      return "/whac-a-penguin.png";
+    }
+    if (path === "/stack") {
+      return "/stacks.png";
+    }
+    return "/comingsoon.png";
+  };
+
   return (
     <motion.div
       key={game.id}
@@ -28,7 +38,7 @@ const GameCard = ({ game, index, navigate }: GameCardProps) => {
     >
       <div className="relative">
         <img
-          src={"https://placehold.co/350x250"}
+          src={getImageSrc(game.path)}
           alt={game.title}
           className="w-full h-full object-cover rounded-2xl"
           loading="lazy"

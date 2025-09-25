@@ -2,13 +2,13 @@ export const GAMES = [
     {
       id: "whack-a-penguin",
       title: "whack-a-penguin",
-      image: "/whack-a-penguin.png",
+      image: '/whac-a-penguin.png',
       path: "/whack-a-penguin",
     },
     {
       id: "stack",
       title: "Stack",
-      image: "/stack.png",
+      image: '/stacks.png',
       path: "/stack",
     },
     {
