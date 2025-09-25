@@ -157,3 +157,7 @@
 body{
   font-family: 'Nunito';
 }
+
+.game-tray{
+  scrollbar-width: none;
+}

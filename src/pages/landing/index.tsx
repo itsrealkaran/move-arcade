@@ -1,14 +1,13 @@
 import { useWallet } from "@/lib/context/wallet-context";
 import { toast } from "sonner";
-import GameCard from "../../components/landing/GameCard";
-import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "motion/react";
 import Footer from "@/components/landing/footer";
-import { GAMES } from "@/lib/constants";
+import GameTray from "@/components/landing/game-tray";
+import WalletPopup from "@/components/landing/WalletPopup";
 
 export default function LandingGridNav() {
-  const navigate = useNavigate();
-  const { wallet, isConnecting, isInitialized, connect, disconnect } = useWallet();
+  const { wallet, isConnecting, isInitialized, connect, disconnect } =
+    useWallet();
 
   const handleWalletAction = async () => {
     try {
@@ -33,16 +32,13 @@ export default function LandingGridNav() {
     <div className="text-orange-50 min-h-screen w-full relative bg-gradient-to-b from-orange-400 to-orange-50 text-[#2E2E2E] flex flex-col items-center justify-between">
       <div className="absolute top-4 right-4 z-10">
         {wallet && (
-          <motion.button
-            onClick={handleWalletAction}
-            className="px-4 py-2 text-sm border-gray-300 rounded-md shadow-sm bg-white"
+          <motion.div
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
           >
-            Disconnect ({wallet.address.slice(0, 6)}...
-            {wallet.address.slice(-4)})
-          </motion.button>
+            <WalletPopup onDisconnect={handleWalletAction} />
+          </motion.div>
         )}
       </div>
 
@@ -50,51 +46,81 @@ export default function LandingGridNav() {
         <motion.div
           layout
           className="custom-font mt-8 text-center p-2 flex justify-center items-center"
-          animate={isInitialized ? {
-            width: wallet ? "40vw" : "60vw",
-            height: wallet ? "20vh" : "40vh",
-          } : {
-            width: "40vw",
-            height: "20vh",
-          }}
+          animate={
+            isInitialized
+              ? {
+                  width: wallet ? "40vw" : "60vw",
+                  height: wallet ? "20vh" : "40vh",
+                }
+              : {
+                  width: "40vw",
+                  height: "20vh",
+                }
+          }
           transition={{ duration: isInitialized ? 0.5 : 0, ease: "easeInOut" }}
         >
-          <div className="space-y-4.5" >
-            <motion.h5 
-            animate={isInitialized ? {
-              fontSize: wallet ? "1.25rem" : "1.5rem",
-            } : {
-              fontSize: "1.25rem",
-            }}
-            transition={{ duration: isInitialized ? 0.5 : 0, ease: "easeInOut" }}
-            className="text-2xl custom-font font-bold">Move Arcade</motion.h5>
-            <motion.h1 
-            animate={isInitialized ? {
-              fontSize: wallet ? "2.5rem" : "5rem",
-            } : {
-              fontSize: "2.5rem",
-            }}
-            transition={{ duration: isInitialized ? 0.5 : 0, ease: "easeInOut" }}
-            className="text-2xl custom-font font-bold">Gamifying Aptos</motion.h1>
+          <div>
+            <motion.h5
+              animate={
+                isInitialized
+                  ? {
+                      fontSize: wallet ? "1.25rem" : "1.5rem",
+                    }
+                  : {
+                      fontSize: "1.25rem",
+                    }
+              }
+              transition={{
+                duration: isInitialized ? 0.5 : 0,
+                ease: "easeInOut",
+              }}
+              className="text-2xl custom-font font-bold"
+            >
+              Move Arcade
+            </motion.h5>
+            <motion.h1
+              animate={
+                isInitialized
+                  ? {
+                      fontSize: wallet ? "2.5rem" : "5rem",
+                    }
+                  : {
+                      fontSize: "2.5rem",
+                    }
+              }
+              transition={{
+                duration: isInitialized ? 0.5 : 0,
+                ease: "easeInOut",
+              }}
+              className="text-2xl custom-font font-bold"
+            >
+              Gamifying Aptos
+            </motion.h1>
           </div>
         </motion.div>
 
         <AnimatePresence mode="wait">
           <motion.div
             key="games-grid"
-            className="border rounded-lg flex item-center justify-center"
+            className={`border-8 bg-white border-[#FFDFC4]/90 rounded-4xl flex item-center justify-center overflow-y-auto ${
+              wallet ? "p-3" : "p-0"
+            } game-tray`}
             initial={{ scale: 0.8, opacity: 0 }}
-            animate={isInitialized ? {
-              scale: 1,
-              opacity: 1,
-              width: wallet ? "80vw" : "auto",
-              height: wallet ? "20vh" : "auto",
-            } : {
-              scale: 1,
-              opacity: 1,
-              width: "auto",
-              height: "auto",
-            }}
+            animate={
+              isInitialized
+                ? {
+                    scale: 1,
+                    opacity: 1,
+                    width: wallet ? "75vw" : "auto",
+                    height: wallet ? "60vh" : "auto",
+                  }
+                : {
+                    scale: 1,
+                    opacity: 1,
+                    width: "auto",
+                    height: "auto",
+                  }
+            }
             transition={{ duration: isInitialized ? 0.5 : 0 }}
           >
             {!wallet ? (
@@ -102,10 +128,8 @@ export default function LandingGridNav() {
                 key="connect-button"
                 onClick={handleWalletAction}
                 disabled={isConnecting}
-                className={`px-6 py-3 text-white rounded-lg ${
-                  isConnecting
-                    ? "bg-gray-500 cursor-not-allowed"
-                    : "bg-[#2E2E2E] hover:bg-gray-800"
+                className={`px-6 py-3 text-orange-400 text-lg font-bold rounded-lg ${
+                  isConnecting ? "cursor-not-allowed" : ""
                 }`}
                 initial={{ scale: 0.8, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
@@ -115,12 +139,7 @@ export default function LandingGridNav() {
                 {isConnecting ? "Connecting..." : "Connect Wallet"}
               </motion.button>
             ) : (
-              // game-tray
-              <motion.div className="grid grid-cols-3 md:grid-cols-3 gap-6">
-                {GAMES.map((game, index) => (
-                  <GameCard game={game} index={index} navigate={navigate} />
-                ))}
-              </motion.div>
+              <GameTray />
             )}
           </motion.div>
         </AnimatePresence>
