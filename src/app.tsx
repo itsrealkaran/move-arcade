@@ -1,6 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Leaderboard from "./pages/Leaderboard";
 import Home from "./pages/Home";
+import Stack from "./stack";
 import store from "./store";
 import { Provider } from "react-redux";
 import Landing from "./pages/landing";

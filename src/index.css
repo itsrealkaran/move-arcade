@@ -154,7 +154,8 @@
   --background-primary: var(--Foundation-Orange-600) --background-secondary:var(--Foundation-Orange-500)
 }
 
-body{
+body {
+  margin: 0;
   font-family: 'Nunito';
 }
 

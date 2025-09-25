@@ -1,0 +1,116 @@
+.greeting {
+  opacity: 0;
+  filter: blur(20px);
+
+  animation: appearFromBlur 0.55s ease-out forwards;
+}
+
+@keyframes appearFromBlur {
+  from {
+    opacity: 0;
+    filter: blur(20px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+.fadeOut {
+  opacity: 1;
+  filter: blur(0);
+
+  animation: fadeOut 0.4s ease-in forwards;
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    filter: blur(0);
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.greetingTitleContainer {
+  /* position: relative; */
+  /* width: fit-content; */
+  /* margin-inline: auto; */
+
+  z-index: 0;
+
+  --maxTranslation: 10px;
+  --maxTranslationNegative: calc(var(--maxTranslation) * -1);
+
+  --animationDuration: 0.7s;
+  --animationProperties: forwards;
+  --animationTimingFunction: ease-out;
+}
+
+.greetingTitleContainer > p {
+  margin: 0;
+  display: inline;
+
+  opacity: 0.05;
+  animation: greetingTitleTextAppear var(--animationDuration) var(--animationProperties) var(--animationTimingFunction);
+}
+
+@keyframes greetingTitleTextAppear {
+  to {
+    opacity: 1;
+  }
+}
+
+.greetingTitleContainer > span::before
+, .greetingTitleContainer > span::after
+{
+  z-index: -1;
+
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  opacity: 0.02;
+  animation: greetingTitleCopyAppear var(--animationDuration) var(--animationProperties) var(--animationTimingFunction);
+}
+
+@keyframes greetingTitleCopyAppear {
+  to {
+    transform: none;
+    opacity: 0.5;
+  }
+}
+
+.greetingTitleContainer > span:nth-of-type(1)::before {
+  transform: translateX(var(--maxTranslationNegative)) translateY(var(--maxTranslationNegative));
+}
+.greetingTitleContainer > span:nth-of-type(1)::after {
+  transform: translateX(var(--maxTranslation)) translateY(var(--maxTranslationNegative));
+}
+.greetingTitleContainer > span:nth-of-type(2)::before {
+  transform: translateX(var(--maxTranslationNegative)) translateY(var(--maxTranslation));
+}
+.greetingTitleContainer > span:nth-of-type(2)::after {
+  transform: translateX(var(--maxTranslation)) translateY(var(--maxTranslation));
+}
+
+.links {
+  max-width: fit-content;
+  padding: 0.1em 0.5em 0.3em;
+  border-radius: 0.4em;
+  transition-property: backdrop-filter background-color;
+  transition-duration: 0.2s;
+}
+.links:hover {
+  backdrop-filter: blur(20px);
+  background-color: rgba(29, 30, 32, 0.4);
+}
+.links > a {
+  text-decoration: none;
+  color: inherit;
+}
+.links > a:hover {
+  color: rgb(255, 0, 98);
+}
