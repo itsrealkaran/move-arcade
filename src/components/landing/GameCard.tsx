@@ -1,3 +1,4 @@
+import { MoveUpRight } from "lucide-react";
 import { motion } from "motion/react";
 
 interface GameCardProps {
@@ -23,26 +24,26 @@ const GameCard = ({ game, index, navigate }: GameCardProps) => {
         ease: "backOut",
       }}
       onClick={() => navigate(game.path)}
-      className="relative group bg-white rounded-lg shadow-md overflow-hidden cursor-pointer"
+      className="relative p-2 group rounded-3xl shadow-lg cursor-pointer group hover:scale-101 hover:shadow-xl transition-all duration-300 ease-in-out"
     >
-      <div className="aspect-square relative">
+      <div className="relative">
         <img
-          src={"https://placehold.co/600x400"}
-          // src={game.image}
+          src={"https://placehold.co/350x250"}
           alt={game.title}
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover rounded-2xl"
           loading="lazy"
         />
 
         <motion.div
-          className="absolute bottom-0 left-0 right-0 text-center p-3 bg-white/90"
+          className="p-3 bg-white/90 flex items-center justify-between"
           initial={{ y: 10, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.3 }}
         >
-          <h3 className="text-lg font-semibold text-gray-800">
-            {game.title}
-          </h3>
+          <h3 className="text-lg font-semibold text-gray-800">{game.title}</h3>
+          <div className="bg-orange-200 group-hover:bg-orange-400 rounded-full p-2 transition-all duration-300 ease-in-out">
+            <MoveUpRight className="w-5 h-5 text-white" />
+          </div>
         </motion.div>
       </div>
     </motion.div>

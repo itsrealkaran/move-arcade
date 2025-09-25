@@ -7,7 +7,7 @@ const Footer = () => {
         href="https://github.com"
         target="_blank"
         rel="noopener noreferrer"
-        className="text-gray-600 hover:text-gray-900"
+        className="text-orange-300 hover:text-orange-400"
       >
         <Github size={24} />
       </a>
@@ -15,7 +15,7 @@ const Footer = () => {
         href="https://twitter.com"
         target="_blank"
         rel="noopener noreferrer"
-        className="text-gray-600 hover:text-gray-900"
+        className="text-orange-300 hover:text-orange-400"
       >
         <Twitter size={24} />
       </a>
@@ -23,7 +23,7 @@ const Footer = () => {
         href="https://instagram.com"
         target="_blank"
         rel="noopener noreferrer"
-        className="text-gray-600 hover:text-gray-900"
+        className="text-orange-300 hover:text-orange-400"
       >
         <Instagram size={24} />
       </a>

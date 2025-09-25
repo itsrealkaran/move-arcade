@@ -157,10 +157,8 @@
 body {
   margin: 0;
   font-family: 'Nunito';
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
-html, body {
-  overflow: hidden; /* To prevent elastic scrolling (overscroll) in Safari (both mobile and desktop). Reference: https://stackoverflow.com/a/16327467/11474669 */
+.game-tray{
+  scrollbar-width: none;
 }
