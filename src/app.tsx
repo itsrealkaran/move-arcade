@@ -6,6 +6,7 @@ import { Provider } from "react-redux";
 import Landing from "./pages/landing";
 import { WalletProvider } from "./lib/context/wallet-context";
 import { Toaster } from "./components/ui/sonner";
+import Stack from "@/Stacks.tsx";
 
 function App() {
   const router = createBrowserRouter([
@@ -17,10 +18,10 @@ function App() {
       path: "/whack-a-penguin",
       element: <Home />,
     },
-    // {
-    //   path: "/stack",
-    //   element: <Stack />,
-    // },
+    {
+      path: "/stack",
+      element: <Stack />,
+    },
     {
       path: "/leaderboard",
       element: <Leaderboard />,
