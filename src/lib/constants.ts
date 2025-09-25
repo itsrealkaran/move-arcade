@@ -6,52 +6,45 @@ export const GAMES = [
       path: "/whack-a-penguin",
     },
     {
-      id: "memory-match",
-      title: "Memory Match",
-      image: "/memory-match.png",
-      path: "/memory-match",
+      id: "stack",
+      title: "Stack",
+      image: "/stack.png",
+      path: "/stack",
     },
     {
-      id: "puzzle-slide",
+      id: "puzzle-slide ",
       title: "coming soon...",
-      image: "/puzzle-slide.png",
+      image: "/comingsoon.png",
       path: "",
     },
     {
-      id: "whack-a-penguin",
-      title: "whack-a-penguin",
-      image: "/whack-a-penguin.png",
-      path: "/whack-a-penguin",
-    },
-    {
-      id: "memory-match",
-      title: "Memory Match",
-      image: "/memory-match.png",
-      path: "/memory-match",
-    },
-    {
-      id: "puzzle-slide",
+      id: "puzzle-slide2",
       title: "coming soon...",
-      image: "/puzzle-slide.png",
+      image: "/comingsoon.png",
       path: "",
-    },
-    {
-      id: "whack-a-penguin",
-      title: "whack-a-penguin",
-      image: "/whack-a-penguin.png",
-      path: "/whack-a-penguin",
-    },
-    {
-      id: "memory-match",
-      title: "Memory Match",
-      image: "/memory-match.png",
-      path: "/memory-match",
-    },
-    {
-      id: "puzzle-slide",
+    },    {
+      id: "puzzle-slide4",
       title: "coming soon...",
-      image: "/puzzle-slide.png",
+      image: "/comingsoon.png",
       path: "",
-    },
-  ];
-  
+    },    {
+      id: "puzzle-slide3",
+      title: "coming soon...",
+      image: "/comingsoon.png",
+      path: "",
+    },    {
+      id: "puzzle-slide6",
+      title: "coming soon...",
+      image: "/comingsoon.png",
+      path: "",
+    },    {
+      id: "puzzle-slide5",
+      title: "coming soon...",
+      image: "/comingsoon.png",
+      path: "",
+    },    {
+      id: "puzzle-slide7",
+      title: "coming soon...",
+      image: "/comingsoon.png",
+      path: "",
+    },]

@@ -7,7 +7,6 @@ import { Provider } from "react-redux";
 import Landing from "./pages/landing";
 import { WalletProvider } from "./lib/context/wallet-context";
 import { Toaster } from "./components/ui/sonner";
-import Stack from "@/Stacks.tsx";
 
 function App() {
   const router = createBrowserRouter([
