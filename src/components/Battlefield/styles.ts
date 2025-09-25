@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import BackgroundImage from "@assets/bg.png";
-import styles from "@/styles";
 
 export const BattlefieldContainer = styled.section`
   background: url(${BackgroundImage}) center / cover no-repeat;

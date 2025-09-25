@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import styles from "@/styles";
-import BackgroundImage from "@assets/bg.jpg";
+import BackgroundImage from "@assets/bg.png";
 import PenguinHole from "@assets/pengu-hidden.png";
 
 export const WelcomeContainer = styled.div`
