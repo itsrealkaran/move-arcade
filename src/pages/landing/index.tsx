@@ -8,7 +8,7 @@ import { GAMES } from "@/lib/constants";
 
 export default function LandingGridNav() {
   const navigate = useNavigate();
-  const { wallet, isConnecting, connect, disconnect } = useWallet();
+  const { wallet, isConnecting, isInitialized, connect, disconnect } = useWallet();
 
   const handleWalletAction = async () => {
     try {
@@ -46,19 +46,36 @@ export default function LandingGridNav() {
         )}
       </div>
 
-      <div className="flex flex-col items-center space-y-4 flex-grow justify-center w-full max-w-7xl px-4">
+      <div className="flex flex-col items-center space-y-4 justify-center w-full px-4">
         <motion.div
           layout
           className="custom-font mt-8 text-center p-2 flex justify-center items-center"
-          animate={{
+          animate={isInitialized ? {
             width: wallet ? "40vw" : "60vw",
             height: wallet ? "20vh" : "40vh",
+          } : {
+            width: "40vw",
+            height: "20vh",
           }}
-          transition={{ duration: 0.5, ease: "easeInOut" }}
+          transition={{ duration: isInitialized ? 0.5 : 0, ease: "easeInOut" }}
         >
           <div className="space-y-4.5" >
-            <h5 className="text-2xl custom-font font-bold">Move Arcade</h5>
-            <h1 className="text-8xl font-extrabold">Gamifying Aptos</h1>
+            <motion.h5 
+            animate={isInitialized ? {
+              fontSize: wallet ? "1.25rem" : "1.5rem",
+            } : {
+              fontSize: "1.25rem",
+            }}
+            transition={{ duration: isInitialized ? 0.5 : 0, ease: "easeInOut" }}
+            className="text-2xl custom-font font-bold">Move Arcade</motion.h5>
+            <motion.h1 
+            animate={isInitialized ? {
+              fontSize: wallet ? "2.5rem" : "5rem",
+            } : {
+              fontSize: "2.5rem",
+            }}
+            transition={{ duration: isInitialized ? 0.5 : 0, ease: "easeInOut" }}
+            className="text-2xl custom-font font-bold">Gamifying Aptos</motion.h1>
           </div>
         </motion.div>
 
@@ -67,12 +84,18 @@ export default function LandingGridNav() {
             key="games-grid"
             className="border rounded-lg flex item-center justify-center"
             initial={{ scale: 0.8, opacity: 0 }}
-            animate={{
+            animate={isInitialized ? {
               scale: 1,
               opacity: 1,
               width: wallet ? "80vw" : "auto",
+              height: wallet ? "20vh" : "auto",
+            } : {
+              scale: 1,
+              opacity: 1,
+              width: "auto",
+              height: "auto",
             }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: isInitialized ? 0.5 : 0 }}
           >
             {!wallet ? (
               <motion.button

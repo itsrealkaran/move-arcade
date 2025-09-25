@@ -3,12 +3,14 @@ import {
   useContext,
   useState,
   useCallback,
+  useEffect,
   ReactNode,
 } from "react";
 
 interface WalletContextType {
   wallet: WalletInfo | null;
   isConnecting: boolean;
+  isInitialized: boolean;
   connect: () => Promise<void>;
   disconnect: () => Promise<void>;
 }
@@ -23,15 +25,47 @@ interface WalletInfo {
 const WalletContext = createContext<WalletContextType | undefined>(undefined);
 
 // Extend Window interface to include Aptos
+interface AptosWallet {
+  connect: (walletName: string) => Promise<WalletInfo>;
+  disconnect: () => Promise<void>;
+  isConnected: () => Promise<boolean>;
+  account: () => Promise<WalletInfo>;
+}
+
 declare global {
   interface Window {
-    aptos: any;
+    aptos: AptosWallet;
   }
 }
 
 export function WalletProvider({ children }: { children: ReactNode }) {
   const [wallet, setWallet] = useState<WalletInfo | null>(null);
   const [isConnecting, setIsConnecting] = useState(false);
+  const [isInitialized, setIsInitialized] = useState(false);
+
+  // Check for existing wallet connection on mount
+  useEffect(() => {
+    const checkExistingConnection = async () => {
+      try {
+        if (window.aptos) {
+          // Check if wallet is already connected
+          const isConnected = await window.aptos.isConnected();
+          if (isConnected) {
+            const response = await window.aptos.account();
+            if (response) {
+              setWallet(response);
+            }
+          }
+        }
+      } catch (error) {
+        console.log("No existing wallet connection found");
+      } finally {
+        setIsInitialized(true);
+      }
+    };
+
+    checkExistingConnection();
+  }, []);
 
   const connect = useCallback(async () => {
     try {
@@ -62,6 +96,7 @@ export function WalletProvider({ children }: { children: ReactNode }) {
   const value = {
     wallet,
     isConnecting,
+    isInitialized,
     connect,
     disconnect,
   };
